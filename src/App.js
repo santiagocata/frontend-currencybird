@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Invite from "./components/Invite";
+import Register from "./components/Register";
+import List from "./components/List";
+import Navbar from "./components/Navbar";
+import { Route, Routes, Navigate } from "react-router";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/register/invite/:token" element={<Register />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/invite" element={<Invite />} />
+        <Route path="/list" element={<List />} />
+        <Route path="*" element={<Navigate to="/register" />} />
+      </Routes>
+    </>
   );
 }
 
